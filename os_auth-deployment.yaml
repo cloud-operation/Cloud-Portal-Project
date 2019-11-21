@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-auth
+  labels:
+    app: os-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: os-auth
+  template:
+    metadata:
+      labels:
+        app: os-auth
+    spec:
+      containers:
+      - name: os-auth
+        image: shahedmehbub/os_auth:0.0.1
+        imagePullPolicy: Always
+      #  ports:
+      #  - containerPort: 80
+
+      #  env:
+      #      - name: POSTGRES_SERVER_NAME
+      #        value: 172.16.16.25
+      #      - name: POSTGRES_USER_NAME
+      #        value: 'postgres'
