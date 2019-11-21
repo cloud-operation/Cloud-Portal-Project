@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis
+      #  imagePullPolicy: Always
+      #  ports:
+      #  - containerPort: 80
+
+      #  env:
+      #      - name: POSTGRES_SERVER_NAME
+      #        value: 172.16.16.25
+      #      - name: POSTGRES_USER_NAME
+      #        value: 'postgres'
