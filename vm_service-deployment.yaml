@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vm-service
+  labels:
+    app: vm-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vm-service
+  template:
+    metadata:
+      labels:
+        app: vm-service
+    spec:
+      containers:
+      - name: vm-service
+        image: cloudoperation/vm_service:0.0.1
+        imagePullPolicy: Always
+    #    ports:
+    #    - containerPort: 80
+
+    #    env:
+    #        - name: POSTGRES_SERVER_NAME
+    #          value: 172.16.16.25
+    #        - name: POSTGRES_USER_NAME
+    #          value: 'postgres'
