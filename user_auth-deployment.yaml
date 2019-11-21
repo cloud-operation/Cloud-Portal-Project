@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-auth
+  labels:
+    app: user-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-auth
+  template:
+    metadata:
+      labels:
+        app: user-auth
+    spec:
+      containers:
+      - name: user-auth
+        image: cloudoperation/user_auth:0.0.1
+        imagePullPolicy: Always
+      #  ports:
+      #  - containerPort: 80
+
+        env:
+            - name: POSTGRES_SERVER_NAME
+              value: 172.16.16.25
+            - name: POSTGRES_USER_NAME
+              value: 'postgres'
