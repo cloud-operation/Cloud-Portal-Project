@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: info-service
+  labels:
+    app: info-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: info-service
+  template:
+    metadata:
+      labels:
+        app: info-service
+    spec:
+      containers:
+      - name: info-service
+        image: cloudoperation/info_service:0.0.1
